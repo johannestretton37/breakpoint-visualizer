@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Breakpoint visualizer",
+  "description": "Display tailwindcss media breakpoints",
+  "version": "1.0",
+  "action": {
+    "default_title": "Manage settings",
+    "default_popup": "src/settings.html"
+  },
+  "permissions": ["scripting", "tabs", "activeTab"],
+  "content_scripts": [
+    {
+      "js": ["src/index.js"],
+      "css": ["src/index.css"],
+      "matches": ["http://localhost:3000/*"],
+      "run_at": "document_end"
+    }
+  ]
+}
