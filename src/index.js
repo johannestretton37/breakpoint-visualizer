@@ -11,7 +11,10 @@ const parseStylesheets = () => {
         if (rule.conditionText.includes('min-width')) {
           for (const cssRule of rule.cssRules) {
             const breakpoint = cssRule.selectorText?.match(tailwindRegex);
-            if (breakpoint) {
+            if (
+              breakpoint &&
+              !mediaQueries.find((q) => q.name === breakpoint[1])
+            ) {
               mediaQueries.push({
                 name: breakpoint[1],
                 minWidth: Number(
